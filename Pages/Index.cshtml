@@ -1,0 +1,50 @@
+﻿@page
+@model TodosModel
+
+@{
+    ViewData["Title"] = "Home page";
+    string str = string.Empty;
+    TodosModel todos = new TodosModel();
+    List<TodosModel> listTodos = todos.GetTodos();
+    // todos.Add(new TodosModel());
+}
+<link rel="stylesheet" href="~/css/site.css" />
+<div class="text-center table-warning">
+    <h1 class="display-4">Список дел</h1>
+
+    <table class="table table-active">
+        <tr>
+            <th>
+                Номер задачи
+            </th>
+            <th>
+                Наименование
+            </th>
+            <th>
+                Дата добавления
+            </th>
+            <th>
+                Готовность
+            </th>
+        </tr>
+        @{
+            foreach (var j in listTodos)
+            {
+                <tr>
+                    <th>@j.NumberId</th>
+                    <th>@j.Name</th>
+                    <th>@j.DateTimeTodo</th>
+                    <th><input type="checkbox" checked="@j.IsComplited" /></th>
+                    <th><button onclick="">Удалить</button></th>
+                </tr>
+            }
+        }
+    </table>
+    <input type="text" autofocus="@true" width="500" value="@str" />
+    <button type="submit">Добавить</button>
+</div>
+
+<h2>Информация о пользователе</h2>
+<p>Name = @todos?.Name</p>
+<p>Age = @Model</p>
+
