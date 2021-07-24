@@ -1,5 +1,5 @@
 ﻿@page
-@model IndexModel
+@model TodosModel
 
 @{
     ViewData["Title"] = "Home page";
@@ -43,4 +43,8 @@
     <input type="text" autofocus="@true" width="500" value="@str" />
     <button type="submit">Добавить</button>
 </div>
+
+<h2>Информация о пользователе</h2>
+<p>Name = @todos?.Name</p>
+<p>Age = @Model</p>
 

@@ -22,12 +22,12 @@ namespace RazorToDo.Pages
         public List<TodosModel> todos = new List<TodosModel>();
 
 
-        //public IActionResult OnGet()
-        //{
-        //    TodosModel tod = todo.GetTodos().Where(w => w.NumberId == 1).FirstOrDefault();
-        //    return Page();
-        //    //return null;
-        //}
+        public IActionResult OnGet()
+        {
+            var tod = todo.GetTodos().Where(w => w.NumberId == 1).Select(s => s.Name);
+            return Page();
+            //return null;
+        }
 
         public void OnPost(List<TodosModel> todo, string str = "Пусто")
         {
