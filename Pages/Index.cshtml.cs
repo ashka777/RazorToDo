@@ -17,23 +17,5 @@ namespace RazorToDo.Pages
         {
             _logger = logger;
         }
-
-        private TodosModel todo = new TodosModel();
-        public List<TodosModel> todos = new List<TodosModel>();
-
-
-        //public IActionResult OnGet()
-        //{
-        //    var tod = todo.GetTodos().Where(w => w.NumberId == 1).Select(s => s.Name);
-        //    return Page();
-        //    //return null;
-        //}
-
-        public void OnPost(List<TodosModel> todo, string str = "Пусто")
-        {
-            todo.Add(new TodosModel { NumberId = todo.Count + 1, Name = str, DateTimeTodo = DateTime.Now, IsComplited = false });
-
-            //return null;
-        }
     }
 }

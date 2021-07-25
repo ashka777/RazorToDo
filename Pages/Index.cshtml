@@ -1,45 +1,46 @@
 ﻿@page
+
 @model TodosModel
+@using RazorToDo;
 
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Задачи";
     string str = string.Empty;
-    TodosModel todos = new TodosModel();
-    List<TodosModel> listTodos = todos.GetTodos();
-    // todos.Add(new TodosModel());
 }
-<link rel="stylesheet" href="~/css/site.css" />
-<div class="text-center table-warning">
-    <h1 class="display-4">Список дел</h1>
-
-    <table class="table table-active">
-        <tr>
-            <th>
-                Номер задачи
-            </th>
-            <th>
-                Наименование
-            </th>
-            <th>
-                Дата добавления
-            </th>
-            <th>
-                Готовность
-            </th>
-        </tr>
-        @{
-            foreach (var j in listTodos)
-            {
-                <tr>
-                    <th>@j.NumberId</th>
-                    <th>@j.Name</th>
-                    <th>@j.DateTimeTodo</th>
-                    <th><input type="checkbox" checked="@j.IsComplited" /></th>
-                    <th><button onclick="">Удалить</button></th>
-                </tr>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body style="background:#fcfbfb">
+    <div class="text-center table-warning">
+        <h1 class="display-4">Список дел</h1>
+        <table class="table table-active">
+            <tr class="alert-info">
+                <th>
+                    Номер задачи
+                </th>
+                <th>
+                    Наименование
+                </th>
+                <th>
+                    Дата добавления
+                </th>
+                <th>
+                    Готовность
+                </th>
+            </tr>
+            @{
+                foreach (var j in Model.todos)
+                {
+                    <tr class="list-group-flush">
+                        <th>@j.NumberId</th>
+                        <th>@j.Name</th>
+                        <th>@j.DateTimeTodo</th>
+                        <th><input type="checkbox" checked="@j.IsComplited" /></th>
+                    </tr>
+                }
             }
-        }
-    </table>
-    <input type="text" autofocus="@true" width="500" value="@str" />
-    <button type="submit">Добавить</button>
-</div>
+        </table>
+    </div>
+</body>
+</html>
